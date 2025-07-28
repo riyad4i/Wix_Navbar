@@ -44,3 +44,4 @@ document.querySelectorAll('.mobile-dropdown .dropdown-toggle').forEach(toggle =>
     parent.classList.toggle('open');
   });
 });
+
