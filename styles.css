@@ -17,7 +17,12 @@ nav {
     align-items: center;
     padding-inline: .5rem;
     background-color: transparent;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid
+    color: #000000;
+        
+        
+        #eee;
+    
 }
 
 .logo {
