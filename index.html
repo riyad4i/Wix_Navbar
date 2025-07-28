@@ -1,0 +1,209 @@
+wix-navbar
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cheemac Navbar</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <nav class="navbar">
+    <div><img class="logo" src="public/logo.svg" alt="logo"></div>
+
+    <div class="hamburger" id="hamburger">
+      <img src="public/menu.svg" alt="Menu">
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav" id="mobileNav">
+      <div class="mobile-nav-header">
+        <img src="public/logo.svg" class="mobile-logo" alt="logo" />
+        <span class="close-btn" id="closeBtn">&times;</span>
+      </div>
+
+      <ul class="mobile-nav-links">
+        <li class="mobile-nav-item">Home</li>
+
+        <li class="mobile-nav-item mobile-dropdown">
+          <div class="dropdown-toggle">Restaurants
+            <img src="public/chevron-down.svg" class="chevron">
+          </div>
+          <ul class="mobile-dropdown-content">
+            <li>
+              <a href="https://www.cheemcuk.com/cheemc-soho" class="li-w-img">
+                <img class="li-img" src="public/fried-rice.png" alt="Fried Rice Icon">
+                Cheemc Soho
+              </a>
+            </li>
+            <li>
+              <a href="https://www.cheemcuk.com/cheemc-elephant" class="li-w-img">
+                <img class="li-img" src="public/fried-rice.png" alt="Fried Rice Icon">
+                Cheemc Elephant and Castle
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="mobile-nav-item mobile-dropdown">
+          <div class="dropdown-toggle">Menu
+            <img src="public/chevron-down.svg" class="chevron">
+          </div>
+          <ul class="mobile-dropdown-content">
+            <li>
+              <a href="https://www.cheemcuk.com/fried-chicken" class="li-w-img">
+                Fried Chicken
+              </a>
+            </li>
+            <li>
+              <a href="https://www.cheemcuk.com/traditonal-dishes" class="li-w-img">
+                Traditional Dishes
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="mobile-nav-item">Karaoke</li>
+
+        <li class="mobile-nav-item mobile-dropdown">
+          <div class="dropdown-toggle">More
+            <img src="public/chevron-down.svg" class="chevron">
+          </div>
+          <ul class="mobile-dropdown-content">
+            <li>
+              <a href="https://www.cheemcuk.com/reservations" class="li-w-img">
+                Reservations
+              </a>
+            </li>
+            <li>
+              <a href="https://www.cheemcuk.com/aboutus" class="li-w-img">
+                About Us
+              </a>
+            </li>
+            <li>
+              <a href="https://www.cheemcuk.com/locations" class="li-w-img">
+                Locations
+              </a>
+            </li>
+            <li>
+              <a href="https://www.cheemcuk.com/online-ordering" class="li-w-img">
+                Online Orders (New)
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <div class="mobile-actions">
+          <button class="karaoke-btn">Karaoke 🎤</button>
+          <button class="contact-btn">Contact Us</button>
+        </div>
+      </ul>
+    </div>
+
+    <!-- Desktop Menu -->
+    <ul class="nav-links">
+      <li class="nav-item">Home</li>
+
+      <li class="nav-item dropdown" data-dropdown>
+        Restaurants
+        <img src="public/chevron-down.svg" class="chevron">
+        <ul class="dropdown-content">
+          <li class="dropdown-item">
+            <a href="https://www.cheemcuk.com/cheemc-soho">
+              <div class="li-w-img">
+                <img class="li-img" src="public/fried-rice.png" alt="Fried Rice Icon">
+                Cheemc Soho
+              </div>
+            </a>
+          </li>
+          <li class="dropdown-item">
+            <a href="https://www.cheemcuk.com/cheemc-elephant">
+              <div class="li-w-img">
+                <img class="li-img" src="public/rice-bowl.png" alt="Fried Rice Icon">
+                Cheemc Elephant and Castle
+              </div>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item dropdown" data-dropdown>
+        Menu
+        <img src="public/chevron-down.svg" class="chevron">
+        <ul class="dropdown-content">
+          <li class="dropdown-item">
+            <a href="https://www.cheemcuk.com/fried-chicken">
+              <div class="li-w-img">
+                <img class="li-img" src="public/fried-chicken.png" alt="Fried Chicken Icon">
+                Fried Chicken
+              </div>
+            </a>
+          </li>
+          <li class="dropdown-item">
+            <a href="https://www.cheemcuk.com/traditonal-dishes">
+              <div class="li-w-img">
+                <img class="li-img" src="public/rice-bowl-2.png" alt="Traditional Dishes Icon">
+                Traditional Dishes
+              </div>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item dropdown" data-dropdown>
+        Karaoke
+      </li>
+
+      <li class="nav-item dropdown" data-dropdown>
+        More
+        <img src="public/chevron-down.svg" class="chevron">
+        <ul class="dropdown-content">
+          <li class="dropdown-item">
+            <a href="https://www.cheemcuk.com/reservations">
+              <div class="li-w-img">
+                <img class="li-img" src="public/reserve.png" alt="Reservations Icon">
+                Reservations
+              </div>
+            </a>
+          </li>
+          <li class="dropdown-item">
+            <a href="https://www.cheemcuk.com/aboutus">
+              <div class="li-w-img">
+                <img class="li-img" src="public/about-us.png" alt="About Us Icon">
+                About Us
+              </div>
+            </a>
+          </li>
+          <li class="dropdown-item">
+            <a href="https://www.cheemcuk.com/locations">
+              <div class="li-w-img">
+                <img class="li-img" src="public/locations.png" alt="Locations Icon">
+                Locations
+              </div>
+            </a>
+          </li>
+          <li class="dropdown-item">
+            <a href="https://www.cheemcuk.com/online-ordering">
+              <div class="li-w-img">
+                <img class="li-img" src="public/orders.png" alt="Online Orders Icon">
+                Online Orders (New)
+              </div>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="karaoke-btn">Karaoke 🎤</button>
+      <button class="contact-btn">Contact Us</button>
+    </div>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
