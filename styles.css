@@ -36,7 +36,8 @@ nav {
 }
 
 .nav-item {
-    position: center;
+    display: flex;
+    flex-direction: row;
     padding-block: 2rem;
     cursor: pointer;
     /* color: #2c3e50; */
@@ -63,8 +64,7 @@ nav {
     top: auto;
     left: -50vw; */
     /* right: 0; */
-    height: max-content;
-    text-align: center;
+    height: max-contentt;
     background-color: white;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     opacity: 0;
@@ -75,8 +75,7 @@ nav {
     padding-block: 2rem;
     padding-inline: 1rem;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: row;
     z-index: -1;
 }
 
@@ -87,12 +86,11 @@ nav {
 
 .dropdown-content li {
     margin-inline: auto;
-    min-width: 100%;
+    min-width: 0%;
     height: 100%;
     white-space: nowrap;
     color: #333;
     list-style: none;
-    align-items: center;
 }
 
 .dropdown-link {
@@ -267,6 +265,6 @@ nav {
     }
 
     .hamburger {
-        display: block;
+        display: flex;
     }
 }
