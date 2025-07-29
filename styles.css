@@ -91,6 +91,7 @@ nav {
     white-space: nowrap;
     color: #333;
     list-style: none;
+    align-items: center;
 }
 
 .dropdown-link {
