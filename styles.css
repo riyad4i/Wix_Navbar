@@ -36,7 +36,7 @@ nav {
 }
 
 .nav-item {
-    position: relative;
+    position: center;
     padding-block: 2rem;
     cursor: pointer;
     /* color: #2c3e50; */
