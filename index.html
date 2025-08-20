@@ -1,224 +1,221 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cheemac Navbar</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crypgo – Fast & Secure Cryptocurrency Exchange</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f16;            /* deep navy */
+      --card:#0f1521;          /* slightly lighter */
+      --muted:#9aa4b2;         /* muted text */
+      --text:#e6e9ee;          /* primary text */
+      --accent:#3ee481;        /* green CTA */
+      --accent-2:#6be28f;      /* lighter green */
+      --ring:#1f2937;          /* outlines */
+      --container:1100px;      /* content width */
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--text); background:radial-gradient(1200px 600px at 75% 10%, rgba(62,228,129,.08), transparent 60%), var(--bg);
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--container); margin-inline:auto; padding-inline:20px}
+
+    /* NAVBAR */
+    .nav{
+      position:sticky; top:0; z-index:40; backdrop-filter:saturate(180%) blur(8px);
+      background:linear-gradient(180deg, rgba(11,15,22,.8), rgba(11,15,22,.55)); border-bottom:1px solid rgba(255,255,255,.04);
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; height:72px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
+    .brand-logo{width:28px; height:28px; border-radius:8px; background:conic-gradient(from 180deg at 50% 50%, #3ee481, #4ad1ff, #8263ff, #3ee481); box-shadow:0 0 0 2px #0b0f16 inset}
+
+    .nav-links{display:flex; align-items:center; gap:28px}
+    .nav-links a{color:var(--muted); font-weight:500}
+    .nav-links a:hover{color:var(--text)}
+    .btn{display:inline-flex; align-items:center; gap:10px; background:var(--accent); color:#0b0f16; padding:12px 16px; border-radius:12px; font-weight:700; border:1px solid rgba(255,255,255,.08); box-shadow:0 10px 20px rgba(62,228,129,.2)}
+
+    /* Mobile menu */
+    .burger{display:none; width:40px; height:40px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:#101726; align-items:center; justify-content:center}
+    .burger span{width:18px; height:2px; background:#e6e9ee; position:relative; display:block}
+    .burger span:before,.burger span:after{content:""; position:absolute; left:0; width:100%; height:2px; background:#e6e9ee;}
+    .burger span:before{top:-6px} .burger span:after{top:6px}
+
+    .mobile-menu{display:none; padding:14px 0 22px; border-bottom:1px solid rgba(255,255,255,.06)}
+    .mobile-menu a{display:block; padding:10px 0; color:var(--muted)}
+
+    /* HERO */
+    .hero{padding:72px 0 40px}
+    .sup{display:inline-block; font-size:12px; font-weight:600; color:#8bf0b3; background:#11231a; padding:6px 10px; border:1px solid #1e3b2d; border-radius:8px}
+    .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:36px; align-items:center}
+    .h1{font-size:clamp(40px, 6vw, 68px); line-height:1.05; letter-spacing:-.02em; margin:18px 0}
+    .lead{color:var(--muted); font-size:18px; max-width:52ch}
+    .cta-row{margin-top:26px; display:flex; align-items:center; gap:14px}
+    .ghost{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #1f2937; color:var(--text); background:#0e1421}
+
+    /* Phone mock */
+    .phone-wrap{position:relative; width:min(420px, 90%); margin:40px auto 0}
+    .phone{aspect-ratio:9/18; border-radius:36px; background:linear-gradient(180deg,#0e1421,#0a0f18); border:1px solid #1c2230; box-shadow:var(--shadow); position:relative; overflow:hidden}
+    .notch{position:absolute; top:10px; left:50%; transform:translateX(-50%); width:40%; height:18px; background:#0b0f16; border-radius:0 0 12px 12px; border:1px solid #1b2130; border-top:none}
+    .screen{position:absolute; inset:22px 12px 12px; border-radius:22px; background:radial-gradient(400px 300px at 70% 10%, rgba(62,228,129,.15), transparent 55%), #0c1220; border:1px solid #1b2232}
+
+    /* Floating UI chips */
+    .chip{position:absolute; backdrop-filter:blur(6px); background:rgba(16,23,38,.8); border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:10px 12px; font-size:12px; color:#cfe6ff; box-shadow:0 10px 20px rgba(0,0,0,.35)}
+    .chip.green{color:#d1ffe7; background:rgba(35,69,53,.8); border-color:#265e45}
+
+    .chip.stat{right:-14px; top:14%;}
+    .chip.pill{left:-18px; bottom:18%;}
+    .chip.card{right: -30px; bottom:10%;}
+
+    /* Trusted logos */
+    .trusted{padding:28px 0 64px}
+    .trusted .label{color:#7b8796; font-size:14px; margin-bottom:12px}
+    .logos{display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:18px; opacity:.75; filter:grayscale(100%)}
+    .logo{display:flex; align-items:center; justify-content:center; height:40px; border:1px dashed rgba(255,255,255,.08); border-radius:12px; font-weight:600; color:#8892a0}
+
+    /* Sections placeholders */
+    section.section{padding:80px 0; border-top:1px solid rgba(255,255,255,.06); background:linear-gradient(180deg, rgba(255,255,255,.02), transparent)}
+    .section h2{font-size:36px; margin:0 0 12px}
+    .section p{color:var(--muted)}
+
+    /* Footer */
+    footer{padding:40px 0 80px; color:#8a94a6}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .nav-links{display:none}
+      .burger{display:flex}
+      .hero-grid{grid-template-columns:1fr; gap:18px}
+      .phone-wrap{margin:10px auto 0}
+      .logos{grid-template-columns:repeat(3, minmax(0,1fr))}
+    }
+  </style>
 </head>
-
 <body>
-  <nav class="navbar">
-    <div>
-      <a href="https://www.cheemcuk.com/">
-      <img class="logo" src="public/logo.svg" alt="logo">
+  <!-- NAVBAR -->
+  <nav class="nav" aria-label="Main">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-logo" aria-hidden="true"></span>
+        <span>Crypgo</span>
       </a>
-    </div>
-
-    <div class="hamburger" id="hamburger">
-      <img src="public/menu.svg" alt="Menu">
-    </div>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-nav" id="mobileNav">
-      <div class="mobile-nav-header">
-        <img src="public/logo.svg" class="mobile-logo" alt="logo" />
-        <span class="close-btn" id="closeBtn">&times;</span>
+      <button class="burger" id="burger" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+        <span></span>
+      </button>
+      <div class="nav-links" role="menubar">
+        <a href="#features" role="menuitem">Features</a>
+        <a href="#benefits" role="menuitem">Benefits</a>
+        <a href="#services" role="menuitem">Services</a>
+        <a href="#why" role="menuitem">Why Crypgo</a>
+        <a href="#faqs" role="menuitem">FAQs</a>
+        <a class="btn" href="#template">Get template →</a>
       </div>
-
-      <ul class="mobile-nav-links">
-        <li class="mobile-nav-item">Home</li>
-
-        <li class="mobile-nav-item mobile-dropdown">
-          <div class="dropdown-toggle">Restaurants
-            <img src="public/chevron-down.svg" class="chevron">
-          </div>
-          <ul class="mobile-dropdown-content">
-            <li>
-              <a href="https://www.cheemcuk.com/cheemc-soho" class="li-w-img">
-                <img class="li-img" src="public/fried-rice.png" alt="Fried Rice Icon">
-                Cheemc Soho
-              </a>
-            </li>
-            <li>
-              <a href="https://www.cheemcuk.com/cheemc-elephant" class="li-w-img">
-                <img class="li-img" src="public/fried-rice.png" alt="Fried Rice Icon">
-                Cheemc Elephant and Castle
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="mobile-nav-item mobile-dropdown">
-          <div class="dropdown-toggle">Menu
-            <img src="public/chevron-down.svg" class="chevron">
-          </div>
-          <ul class="mobile-dropdown-content">
-            <li>
-              <a href="https://www.cheemcuk.com/fried-chicken" class="li-w-img">
-                Fried Chicken
-              </a>
-            </li>
-            <li>
-              <a href="https://www.cheemcuk.com/traditonal-dishes" class="li-w-img">
-                Traditional Dishes
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="mobile-nav-item">Karaoke</li>
-
-        <li class="mobile-nav-item mobile-dropdown">
-          <div class="dropdown-toggle">More
-            <img src="public/chevron-down.svg" class="chevron">
-          </div>
-          <ul class="mobile-dropdown-content">
-            <li>
-              <a href="https://www.cheemcuk.com/reservations" class="li-w-img">
-                Reservations
-              </a>
-            </li>
-            <li>
-              <a href="https://www.cheemcuk.com/aboutus" class="li-w-img">
-                About Us
-              </a>
-            </li>
-            <li>
-              <a href="https://www.cheemcuk.com/locations" class="li-w-img">
-                Locations
-              </a>
-            </li>
-            <li>
-              <a href="https://www.cheemcuk.com/online-ordering" class="li-w-img">
-                Online Orders (New)
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <div class="mobile-actions">
-          <button class="karaoke-btn">Karaoke 🎤</button>
-          <button class="contact-btn">Contact Us</button>
-        </div>
-      </ul>
     </div>
-
-    <!-- Desktop Menu -->
-    <ul class="nav-links">
-      <a href="https://www.cheemcuk.com/">
-      <li class="nav-item">Home
-      </a>
-      </li>
-      
-      <a href="https://www.cheemcuk.com/home">
-      <li class="nav-item dropdown" data-dropdown>
-        Restaurants
-      </a>
-        <img src="public/chevron-down.svg" class="chevron">
-        <ul class="dropdown-content">
-          <li class="dropdown-item">
-            <a href="https://www.cheemcuk.com/cheemc-soho">
-              <div class="li-w-img">
-                <img class="li-img" src="public/fried-rice.png" alt="Fried Rice Icon">
-                Cheemc Soho
-              </div>
-            </a>
-          </li>
-          <li class="dropdown-item">
-            <a href="https://www.cheemcuk.com/cheemc-elephant">
-              <div class="li-w-img">
-                <img class="li-img" src="public/rice-bowl.png" alt="Fried Rice Icon">
-                Cheemc Elephant and Castle
-              </div>
-            </a>
-          </li>
-        </ul>
-      </li>
-     <a href="https://www.cheemcuk.com/menus">
-      <li class="nav-item dropdown" data-dropdown>
-        Menu
-     </a>
-        <img src="public/chevron-down.svg" class="chevron">
-        <ul class="dropdown-content">
-          <li class="dropdown-item">
-            <a href="https://www.cheemcuk.com/fried-chicken">
-              <div class="li-w-img">
-                <img class="li-img" src="public/fried-chicken.png" alt="Fried Chicken Icon">
-                Fried Chicken
-              </div>
-            </a>
-          </li>
-          <li class="dropdown-item">
-            <a href="https://www.cheemcuk.com/traditonal-dishes">
-              <div class="li-w-img">
-                <img class="li-img" src="public/rice-bowl-2.png" alt="Traditional Dishes Icon">
-                Traditional Dishes
-              </div>
-            </a>
-          </li>
-        </ul>
-      </li>
-      
-     <a href="https://www.cheemcuk.com/karaokebar">
-      <li class="nav-item dropdown" data-dropdown>
-        Karaoke
-     </a>
-      </li>
-
-      <li class="nav-item dropdown" data-dropdown>
-        More
-        <img src="public/chevron-down.svg" class="chevron">
-        <ul class="dropdown-content">
-          <li class="dropdown-item">
-            <a href="https://www.cheemcuk.com/reservations">
-              <div class="li-w-img">
-                <img class="li-img" src="public/reserve.png" alt="Reservations Icon">
-                Reservations
-              </div>
-            </a>
-          </li>
-          <li class="dropdown-item">
-            <a href="https://www.cheemcuk.com/aboutus">
-              <div class="li-w-img">
-                <img class="li-img" src="public/about-us.png" alt="About Us Icon">
-                About Us
-              </div>
-            </a>
-          </li>
-          <li class="dropdown-item">
-            <a href="https://www.cheemcuk.com/locations">
-              <div class="li-w-img">
-                <img class="li-img" src="public/locations.png" alt="Locations Icon">
-                Locations
-              </div>
-            </a>
-          </li>
-          <li class="dropdown-item">
-            <a href="https://www.cheemcuk.com/online-ordering">
-              <div class="li-w-img">
-                <img class="li-img" src="public/orders.png" alt="Online Orders Icon">
-                Online Orders (New)
-              </div>
-            </a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-
-    <div class="nav-actions">
-      <a href="https://www.cheemcuk.com/karaokebar">
-      <button class="karaoke-btn">Karaoke 🎤</button>
-      </a>
-      <a href="https://www.cheemcuk.com/locations">
-      <button class="contact-btn">Contact Us</button>
-      </a>
+    <div id="mobile-menu" class="mobile-menu container" hidden>
+      <a href="#features">Features</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#services">Services</a>
+      <a href="#why">Why Crypgo</a>
+      <a href="#faqs">FAQs</a>
+      <a class="btn" style="margin-top:10px; width:max-content" href="#template">Get template →</a>
     </div>
   </nav>
 
-  <script src="script.js"></script>
-</body>
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="sup">Future of crypto trading</span>
+        <h1 class="h1">Fast and Secure<br/>Cryptocurrency<br/>Exchange</h1>
+        <p class="lead">Trade cryptocurrencies with ease, security, and advanced features on our cutting‑edge platform.</p>
+        <div class="cta-row">
+          <a class="btn" href="#features">Explore more →</a>
+          <a class="ghost" href="#video" aria-label="Watch how it works">▶ Watch demo</a>
+        </div>
+      </div>
 
+      <!-- Phone mockup with floating chips -->
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="notch" aria-hidden="true"></div>
+          <div class="screen"></div>
+          <div class="chip stat">📈 Statistic</div>
+          <div class="chip green pill">⬤ +75%</div>
+          <div class="chip card">💳 Visa •••• 7710</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trusted logos -->
+    <div class="container trusted">
+      <div class="label">Trusted by</div>
+      <div class="logos" aria-label="Trusted brands">
+        <div class="logo">Logoipsum</div>
+        <div class="logo">Logoipsum</div>
+        <div class="logo">Logoipsum</div>
+        <div class="logo">Logoipsum</div>
+        <div class="logo">Logoipsum</div>
+        <div class="logo">Logoipsum</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Feature Sections (placeholders you can fill) -->
+  <section id="features" class="section container">
+    <h2>Features</h2>
+    <p>Create wallets, trade instantly, monitor real‑time charts, and set automated orders with enterprise‑grade security.</p>
+  </section>
+  <section id="benefits" class="section container">
+    <h2>Benefits</h2>
+    <p>Low fees, lightning execution, deep liquidity, and 24/7 support built for beginners and pros.</p>
+  </section>
+  <section id="services" class="section container">
+    <h2>Services</h2>
+    <p>API access, OTC desk, staking, and institutional onboarding.</p>
+  </section>
+  <section id="why" class="section container">
+    <h2>Why Crypgo</h2>
+    <p>Audited smart contracts, proof‑of‑reserves, and a security‑first culture.
+    </p>
+  </section>
+  <section id="faqs" class="section container">
+    <h2>FAQs</h2>
+    <p>Have questions? We’ve got answers about verification, deposits, and trading limits.</p>
+  </section>
+
+  <footer class="container">
+    © <span id="year"></span> Crypgo. All rights reserved.
+  </footer>
+
+  <script>
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const burger = document.getElementById('burger');
+    const mobile = document.getElementById('mobile-menu');
+    burger.addEventListener('click', () => {
+      const opened = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', String(!opened));
+      if(opened){
+        mobile.setAttribute('hidden','');
+      }else{
+        mobile.removeAttribute('hidden');
+      }
+    });
+
+    // Close mobile menu on link click
+    mobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      mobile.setAttribute('hidden','');
+      burger.setAttribute('aria-expanded','false');
+    }));
+  </script>
+</body>
 </html>
